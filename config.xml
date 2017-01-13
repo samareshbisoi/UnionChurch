@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="in.org.unionchurch.union_church" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="in.org.unionchurch.union_church" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Union Church</name>
     <description>
         This is a Church App specifically designed for members to stay updated with the church activities.
@@ -129,5 +129,5 @@
 	<platform name="winphone">
       
     </platform>
-
+	
 </widget>
