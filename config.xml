@@ -5,7 +5,7 @@
         This is a Church App specifically designed for members to stay updated with the church activities.
     </description>
     <author email="support@pocketapp.in" href="http://pocketapp.in">
-        Union Church Team
+     PocketApp.in
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
