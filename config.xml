@@ -129,11 +129,14 @@
 	     
     </platform>
 	
-	<gap:config-file platform="ios" parent="NSPhotoLibraryUsageDescription" overwrite="true">
+	<config-file target="*-Info.plist" parent="NSPhotoLibraryUsageDescription">
     <array>
-        <string>NSPhotoLibraryUsageDescription</string>
+        <dict>
+            <key>NSPhotoLibraryUsageDescription</key>
+            <string>Photo Library Access Warning</string>
+        </dict>
     </array>
-</gap:config-file>
+</config-file>
 	
 	<platform name="winphone">
       
