@@ -132,8 +132,8 @@
 	
 	
 	
-	<platform name="winphone">
-      
-    </platform>
+<platform name="winphone">
+  <preference name="phonegap-version" value="cli-5.4.1" />
+</platform>
 	
 </widget>
