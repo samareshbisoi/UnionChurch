@@ -7,7 +7,7 @@
     <author email="support@pocketapp.in" href="http://pocketapp.in">
      PocketApp.in
     </author>
-	<preference name="windows-identity-name" value="26744SamareshBisoi.UnionChurch" /> 
+	
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
