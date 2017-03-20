@@ -1,17 +1,22 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="in.org.unionchurch.union_church" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="in.org.unionchurch.unionchurch" version="3.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Union Church</name>
     <description>
         This is a Church App specifically designed for members to stay updated with the church activities.
     </description>
-    <author email="support@unionchurch.org.in" href="http://unionchurch.org.in">
-        Union Church Team
+    <author email="support@pocketapp.in" href="http://pocketapp.in">
+     PocketApp.in
     </author>
+	
+	<preference name="windows-identity-name" value="26744SamareshBisoi.21906E7BA496D" />
+	
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
+	
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
+<plugin name="cordova-plugin-ios-camera-permissions" source="npm"/>
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
     <plugin name="cordova-plugin-console" source="npm" spec="~1.0.2" />
     <plugin name="cordova-plugin-contacts" source="npm" spec="~2.0.1" />
@@ -38,7 +43,7 @@
 	 <preference name="SplashScreen" value="screen"/> 
 	 
 	  
-<preference name="SplashScreenDelay" value="6000"/>
+<preference name="SplashScreenDelay" value="5000"/>
 	
 	
     <platform name="android">
@@ -124,10 +129,15 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+	     
     </platform>
 	
-	<platform name="winphone">
-      
-    </platform>
+	
+	
+<platform name="winphone">
+	
+	<preference name="phonegap-version" value="cli-6.0.0" />
+ 
+</platform>
 	
 </widget>
