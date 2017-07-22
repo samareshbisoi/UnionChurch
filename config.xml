@@ -19,7 +19,7 @@
 	
     <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.3" />
     <plugin name="phonegap-plugin-push" source="npm" spec="~1.8.0">
-        <variable name="SENDER_ID" value="unionchurch-174305" />
+        <variable name="SENDER_ID" value="145644661595" />
     </plugin>
     <plugin name="cordova-plugin-console" source="npm" spec="~1.0.3" />
 	
