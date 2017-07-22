@@ -15,37 +15,100 @@
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.
- */
+ */ 
 var app = {
     // Application Constructor
-    initialize: function() {
+    initialize: function() { 
         this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+    bindEvents: function() {  //alert("called");
+        document.addEventListener('deviceready', this.onDeviceReady, false); 
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+    onDeviceReady: function() { //alert("145644661595");
+        console.log('Received Device Ready Event');
+        console.log('calling setup push');
+        app.setupPush();
     },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+    setupPush: function() { 
+        console.log('calling push init');
+        var push = PushNotification.init({
+            "android": {
+                "senderID": "145644661595"
+            },
+            "browser": {},
+            "ios": {
+                "sound": true,
+                "vibration": true,
+                "badge": true
+            },
+            "windows": {}
+        });
+        console.log('after init');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        push.on('registration', function(data) {
+            console.log('registration event: ' + data.registrationId);
+            
+            
 
-        console.log('Received Event: ' + id);
+            var oldRegId = localStorage.getItem('registrationId');
+            if (oldRegId !== data.registrationId) {
+                // Save new registration ID
+                localStorage.setItem('registrationId', data.registrationId);
+                // Post registrationId to your app server as the value has changed
+            }
+
+            var parentElement = document.getElementById('registration');
+            var listeningElement = parentElement.querySelector('.waiting');
+            var receivedElement = parentElement.querySelector('.received');
+
+            listeningElement.setAttribute('style', 'display:none;');
+            receivedElement.setAttribute('style', 'display:block;');
+            
+            ////////////database store registration //////////
+            $("#GCM_ID").html('GCM ID...'+data.registrationId);
+            var dataString="regID="+data.registrationId;
+            var BaseURL = "https://freshboxoffice.com/phonegap/";
+            $.ajax({
+                    type: "POST",
+                    url: BaseURL+"insert_gcm_reg_id.php?",
+                    //url:"http://localhost/phonegap/database/insert.php",
+                    data: dataString,
+                    crossDomain: true,
+                    cache: false,
+                    beforeSend: function(){ $("#GCM_ID").html('Connecting...'+data.registrationId);},
+                    success: function(dataINS){
+                        if(dataINS=="ok")
+                        {}
+                        else if(dataINS=="error")
+                        {} 
+                         else if(dataINS=="duplicate")
+                        {}
+                    }
+                });
+            
+            ///////////////////database input registration ////////
+        });
+
+        push.on('error', function(e) {
+            console.log("push error = " + e.message);
+        });
+
+        push.on('notification', function(data) {
+            console.log('notification event');
+            navigator.notification.alert(
+                data.message,         // message
+                null,                 // callback
+                data.title,           // title
+                'Ok'                  // buttonName
+            );
+       });
     }
 };
-
-app.initialize();
